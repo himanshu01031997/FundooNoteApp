@@ -8,7 +8,7 @@ namespace CommonLayer.Model
 {
     public class UserPostModel
     {
-       
+       //post model for user
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailId { get; set; }

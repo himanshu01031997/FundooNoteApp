@@ -57,7 +57,7 @@ namespace CommonLayer.Model
             SMTP.Send(mail);
             messageQueue.BeginReceive();
         }
-        
+        //msmq model
     }
 }
 

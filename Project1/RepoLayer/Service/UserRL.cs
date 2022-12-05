@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace RepoLayer.Service
 {
     public class UserRL : IUserRL
-    {
+    {//user service class
         FundooDBContext funcontext;
         private readonly IConfiguration configuration;//used to read setting and connection string from appsetting.json
         public UserRL(FundooDBContext funcontext, IConfiguration configuration)

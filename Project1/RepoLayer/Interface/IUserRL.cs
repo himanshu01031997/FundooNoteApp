@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace RepoLayer.Interface
 {
     public interface IUserRL//interface of repoclass
-        
     {
         public Entity.UserTable AddUser(UserPostModel usermodel);
         public string UserLoginRegistration(string email, string password);
@@ -16,7 +15,7 @@ namespace RepoLayer.Interface
         public string ForgetPassword(string email);
         public bool ChangePassword(string email, PasswordValidation valid);
 
-
+        //user interfacce for repolayer
 
     }
 }

@@ -14,6 +14,6 @@ namespace CommonLayer.Model
 
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-
+//password validation
     }
 }

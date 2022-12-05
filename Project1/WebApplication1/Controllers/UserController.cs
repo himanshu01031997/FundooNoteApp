@@ -10,7 +10,7 @@ namespace FundooNoteApp.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    
+    //presentation class
     public class UserController : ControllerBase
     {
         IUserBL userBL;

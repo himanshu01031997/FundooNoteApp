@@ -10,6 +10,7 @@ namespace BusinessLayer.Interface
 {
     public interface IUserBL//interface of business layer
     {
+        //user business  interface
         public UserTable AddUser(UserPostModel user);
         public string LoginUser(string email, string password);
         public string ForgetPassword(string email);

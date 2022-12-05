@@ -8,6 +8,7 @@ namespace CommonLayer.Model
 {
     public class NoteModel
     {
+
         public string Title { get; set; }
         public string Body { get; set; }
 

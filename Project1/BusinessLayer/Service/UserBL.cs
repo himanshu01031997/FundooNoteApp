@@ -13,6 +13,7 @@ namespace BusinessLayer.Service
 {
     public class UserBL:IUserBL//service class inherite the interface
     {
+        //user service business
         private readonly IUserRL userRL;
         public UserBL(IUserRL userRL)
         {

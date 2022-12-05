@@ -12,7 +12,7 @@ namespace RepoLayer.Entity
     {
         [Key]//primary key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]//genrate userid value one by one
-        
+        //user table
         public long UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

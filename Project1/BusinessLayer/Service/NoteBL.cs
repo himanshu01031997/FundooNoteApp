@@ -12,6 +12,7 @@ namespace BusinessLayer.Service
 {
     public class NoteBL:INoteBL
     {
+        
         private readonly INoteRL noteRL;
         public NoteBL(INoteRL noteRL)
         {
