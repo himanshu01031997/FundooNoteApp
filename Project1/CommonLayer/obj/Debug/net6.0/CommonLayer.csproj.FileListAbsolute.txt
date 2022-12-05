@@ -1,0 +1,12 @@
+D:\CFP-199\Project1\CommonLayer\bin\Debug\net6.0\CommonLayer.deps.json
+D:\CFP-199\Project1\CommonLayer\bin\Debug\net6.0\CommonLayer.dll
+D:\CFP-199\Project1\CommonLayer\bin\Debug\net6.0\CommonLayer.pdb
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.csproj.AssemblyReference.cache
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.AssemblyInfoInputs.cache
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.AssemblyInfo.cs
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.csproj.CoreCompileInputs.cache
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.dll
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\refint\CommonLayer.dll
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\CommonLayer.pdb
+D:\CFP-199\Project1\CommonLayer\obj\Debug\net6.0\ref\CommonLayer.dll

@@ -1,0 +1,17 @@
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\BusinessLayer.deps.json
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\BusinessLayer.dll
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\BusinessLayer.pdb
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.AssemblyReference.cache
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfoInputs.cache
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfo.cs
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.dll
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\refint\BusinessLayer.dll
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.pdb
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\ref\BusinessLayer.dll
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\CommonLayer.dll
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\RepoLayer.dll
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\RepoLayer.pdb
+D:\CFP-199\Project1\BusinessLayer\bin\Debug\net6.0\CommonLayer.pdb
+D:\CFP-199\Project1\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.CopyComplete

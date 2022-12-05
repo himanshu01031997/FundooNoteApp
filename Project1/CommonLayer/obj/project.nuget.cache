@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pQX+en/DteRS24WzUidWDEBz43onhgozjwVpoueWViMC3MjdcVB9nVZ4b2N2dnzQY0ki/ToqpBooJ5BtxTSshg==",
+  "success": true,
+  "projectFilePath": "D:\\CFP-199\\Project1\\CommonLayer\\CommonLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\experimental.system.messaging\\1.1.0\\experimental.system.messaging.1.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
