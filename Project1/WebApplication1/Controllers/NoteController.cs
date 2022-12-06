@@ -19,7 +19,7 @@ namespace FundooNoteApp.Controllers
             this.dbContext = dbContext;
         }
         [HttpPost]
-        [Route("Create")]
+        [Route("Create")]//name for method in url(in swaggger)
         public IActionResult CreateNotes(NoteModel notemodel)
         {
             try
@@ -130,6 +130,142 @@ namespace FundooNoteApp.Controllers
                 throw;
             }
         }
+        [HttpPut]
+        [Route("PinMessage")]
+
+
+        public IActionResult PinOrNot(long noteid)
+        {
+            long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+            var result=inoteBL.PinOrNot(noteid);
+            if (result != null)
+            {
+                return Ok(new { success = true, message = "message is pinned" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "message is not pinned" });
+
+            }
+
+        }
+        [HttpPut]
+        [Route("ArchieveMessage")]
+
+        public IActionResult ArchiveORNot(long noteid)
+        {
+
+            long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+            var result = inoteBL.ArchiveORNot(noteid);
+            if (result != null)
+            {
+                return Ok(new { success = true, message = "message is Archieved" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "message is not Archieved" });
+
+            }
+        }
+        [HttpGet]
+        [Route("GetAllArchieve")]
+        public IActionResult GetAllArchieve()
+        {
+            try
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);///////
+                var result = inoteBL.GetAllArchieve(userId);
+                if (result != null)
+                {
+                    return Ok(new { success = true, message = "get archive list", data = result });
+
+                }
+                else
+                {
+                    return BadRequest(new { success = false, message = "Did'nt get archive list" });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPut]
+        [Route("TrashInput")]
+
+        public IActionResult Trashornot(long noteid)
+        {
+            long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+            var result = inoteBL.Trashornot(noteid);
+            if (result != null)
+            {
+                return Ok(new { success = true, message = "message is Trashed" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "message is not Trashed" });
+
+            }
+        }
+        [HttpGet]
+        [Route("GetAllTrash")]
+        public IActionResult GetAllTrash()
+        {
+            try
+            {
+                long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);///////
+                var result = inoteBL.GetAllTrash(userId);
+                if (result != null)
+                {
+                    return Ok(new { success = true, message = "Trash list found", data = result });
+
+                }
+                else
+                {
+                    return BadRequest(new { success = false, message = "Trash list not Found" });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        [Route("UploadImage")]
+        public IActionResult UploadMyImage(long noteid,IFormFile img)
+        {
+            long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+            var result = inoteBL.UploadImage(userId, noteid, img);
+            if (result != null)
+            {
+                return Ok(new { success = true, message = "Image is uploaded" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "Image is not uploaded" });
+            }
+
+        }
+        [HttpPut]
+        [Route("DeleteTrashForever")]
+
+        public IActionResult DeleteTrashforever(long noteid)
+        {
+            long userId = Convert.ToInt32(User.Claims.FirstOrDefault(e => e.Type == "UserId").Value);
+            var result = inoteBL.DeleteTrashForEver(noteid);
+            if (result != null)
+            {
+                return Ok(new { success = true, message = "message is deleted from trash" });
+            }
+            else
+            {
+                return BadRequest(new { success = false, message = "message is not deleted from trash" });
+
+            }
+        }
+
+
+
 
     }
 }

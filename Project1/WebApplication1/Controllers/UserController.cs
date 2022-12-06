@@ -21,7 +21,8 @@ namespace FundooNoteApp.Controllers
             this.context = context;
         }
         [HttpPost("Register")]//http verb
-        public ActionResult RegisterUser(UserPostModel user)
+        //Register user 
+        public IActionResult RegisterUser(UserPostModel user)
         {
             try
             {
@@ -38,7 +39,7 @@ namespace FundooNoteApp.Controllers
             }
         }
         [HttpPost("Login/{email}/{password}")]//http verb
-        public ActionResult LoginUser(string email, string password)
+        public IActionResult LoginUser(string email, string password)
         {
             try
             {
@@ -59,7 +60,7 @@ namespace FundooNoteApp.Controllers
             }
         }
         [HttpPost("ForgetPassword")]
-        public ActionResult ForgetPassword(string email)
+        public IActionResult ForgetPassword(string email)
         {
             try
             {
@@ -78,7 +79,7 @@ namespace FundooNoteApp.Controllers
 
         [HttpPost]
         [Route("ResetPassword")]
-        public ActionResult ResetPassword(string email, PasswordValidation valid)
+        public IActionResult ResetPassword(string email, PasswordValidation valid)
         {
             try
             {

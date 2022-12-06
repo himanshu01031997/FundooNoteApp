@@ -12,8 +12,9 @@ namespace RepoLayer.Context
     {
         public FundooDBContext(DbContextOptions options):base(options) {} 
         public DbSet<UserTable> UserDetailTable { get; set; }//creating table (name of table UserDetailTable)
-        public DbSet<MyNoteEntity> NoteEntityTable { get; set; }//creating table (name of table NoteEntityTable)
-
-
+        public DbSet<MyNoteEntity> NoteEntityTable { get; set; }
+        //public DbSet<MyLableEntity> LableEntityTable { get; set; }
+        //public DbSet<Labal> LableTable { get; set; }
+        //public DbSet<LabalEntity> label { get; set; }
     }
 }

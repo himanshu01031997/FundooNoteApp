@@ -29,7 +29,7 @@ namespace RepoLayer.Entity
         [ForeignKey("UserDetailTable")]
         public long UserId { get; set; }
         [JsonIgnore]
-        public virtual UserTable UserDetailTable { get; set; }
+        public virtual UserTable User{ get; set; }
 
     }
 }

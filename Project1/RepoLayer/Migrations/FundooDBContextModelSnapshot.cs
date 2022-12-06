@@ -105,13 +105,13 @@ namespace RepoLayer.Migrations
 
             modelBuilder.Entity("RepoLayer.Entity.MyNoteEntity", b =>
                 {
-                    b.HasOne("RepoLayer.Entity.UserTable", "UserDetailTable")
+                    b.HasOne("RepoLayer.Entity.UserTable", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("UserDetailTable");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
+using Microsoft.AspNetCore.Http;
 using RepoLayer.Entity;
 using RepoLayer.Interface;
+using RepoLayer.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +76,91 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+        public bool PinOrNot(long noteid)
+        {
+            try
+            {
+                return noteRL.PinOrNot(noteid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool ArchiveORNot(long noteid)
+        {
+            try
+            {
+                return noteRL.ArchiveORNot(noteid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        public IEnumerable<MyNoteEntity> GetAllArchieve(long userid)
+        {
+            try
+            {
+                return noteRL.GetAllArchieve(userid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool Trashornot(long noteid)//params
+        {
+            try
+            {
+                return noteRL.Trashornot(noteid);
+            }
+             catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IEnumerable<MyNoteEntity> GetAllTrash(long userid)//
+        {
+            try
+            {
+                return noteRL.GetAllTrash(userid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string UploadImage(long userid, long noteid, IFormFile img)
+        {
+            try
+            {
+                return noteRL.UploadImage(userid,noteid,img);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool DeleteTrashForEver(long noteid)
+        {
+            try
+            {
+                return noteRL.DeleteTrashForEver(noteid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+
 
 
 
