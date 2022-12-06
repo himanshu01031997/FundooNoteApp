@@ -27,6 +27,7 @@ namespace RepoLayer.Service
             this.funcontext = funcontext;
             this.configuration = configuration;
         }
+        //Add user
         public Entity.UserTable AddUser(UserPostModel usermodel)
         {
             try

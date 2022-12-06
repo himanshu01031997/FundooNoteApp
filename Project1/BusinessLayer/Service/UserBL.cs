@@ -19,6 +19,7 @@ namespace BusinessLayer.Service
         {
             this.userRL = userRL;
         }
+        // Adduser
         public UserTable AddUser(UserPostModel user)
         {
             try

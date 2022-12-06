@@ -1,10 +1,15 @@
-﻿using CommonLayer.Model;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using CommonLayer.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using RepoLayer.Context;
 using RepoLayer.Entity;
 using RepoLayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,9 +18,12 @@ namespace RepoLayer.Service
     public class NoteRL:INoteRL
     {
         FundooDBContext funcontext;
-        public NoteRL(FundooDBContext funcontext)
+        private readonly IConfiguration configuration;//used to read setting and connection string from appsetting.json
+
+        public NoteRL(FundooDBContext funcontext, IConfiguration configuration)
         {
             this.funcontext = funcontext;
+            this.configuration = configuration;
         }
         public MyNoteEntity CreateNotes(NoteModel notemodel, long UserId)
         {
@@ -69,6 +77,10 @@ namespace RepoLayer.Service
                 throw;
             }
         }
+        
+        
+       
+
         public bool UpdateNotes(long noteid,long userId,NoteModel node)
         {
             try
@@ -139,6 +151,177 @@ namespace RepoLayer.Service
                 throw;
             }
         }
+        public bool PinOrNot(long noteid)
+        {
+            try
+            {
+                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                if (result.PinNotes == true)
+                {
+                    result.PinNotes = false;
+                    this.funcontext.SaveChanges();
+                    return false;
+                }
+                else
+                {
+                    result.PinNotes = true;
+                    this.funcontext.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool ArchiveORNot(long noteid)
+        {
+            try
+            {
+                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                if (result.Archive == true)
+                {
+                    result.Archive = false;
+                    this.funcontext.SaveChanges();
+                    return false;
+                }
+                else
+                {
+                    result.Archive = true;
+                    this.funcontext.SaveChanges();
+                    return true;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IEnumerable<MyNoteEntity> GetAllArchieve(long userid)
+        {
+            try
+            {
+                var result = funcontext.NoteEntityTable.Where(r => r.UserId == userid && r.Archive == true);//after adding the note only we hava to use note entity table
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        public bool Trashornot(long noteid)
+        {
+            try
+            {
+                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                if (result.Trash == true)
+                {
+                    result.Trash = false;
+                    this.funcontext.SaveChanges();
+                    return false;
+
+                }
+                result.Trash=true;
+                this.funcontext.SaveChanges();
+                return true;
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IEnumerable<MyNoteEntity> GetAllTrash(long userid)
+        {
+            try
+            {
+                var result = funcontext.NoteEntityTable.Where(r => r.UserId == userid && r.Trash == true);//after adding the note only we hava to use note entity table
+                if (result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        //
+        public bool DeleteTrashForEver(long noteid)
+        {
+            try
+            {
+                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                if (result.Trash == true)
+                {
+                    funcontext.NoteEntityTable.Remove(result);
+                    this.funcontext.SaveChanges();
+                    return false;
+
+                }
+                result.Trash = true;
+                this.funcontext.SaveChanges();
+                return true;
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public string UploadImage(long userid, long noteid, IFormFile img)
+        {
+            try
+            {
+                var result = funcontext.NoteEntityTable.FirstOrDefault(r => r.NoteId == noteid && r.UserId == userid);
+                if (result != null)
+                {
+                    Account account = new Account(
+                        this.configuration["CloudinarySetting:CloudName"],
+                        this.configuration["CloudinarySetting:ApiKey"],
+                        this.configuration["CloudinarySetting:ApiSecret"]);
+
+                    Cloudinary cloudinary = new Cloudinary(account);
+                    var uploadparam = new ImageUploadParams()
+                    {
+                        File = new FileDescription(img.FileName, img.OpenReadStream()),
+
+                    };
+                    var uploadresult = cloudinary.Upload(uploadparam);
+                    string imagePath = uploadresult.Url.ToString();
+                    result.Image = imagePath;
+                    funcontext.SaveChanges();
+                    return "Image uploaded successfully";
+                }
+                else
+                {
+                    return "Image not Uploaded";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        
+
 
 
     }
