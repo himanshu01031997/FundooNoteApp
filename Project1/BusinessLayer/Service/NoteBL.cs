@@ -158,11 +158,17 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
-
-
-
-
-
+        public MyNoteEntity GetReminder(long noteid, DateTime reminder)
+        {
+            try
+            {
+                return noteRL.GetReminder(noteid,reminder);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 
     }

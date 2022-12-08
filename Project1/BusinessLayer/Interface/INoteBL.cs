@@ -25,6 +25,8 @@ namespace BusinessLayer.Interface
         public bool DeleteTrashForEver(long noteid);
         public IEnumerable<MyNoteEntity> GetAllArchieve(long userid);
         public IEnumerable<MyNoteEntity> GetAllTrash(long userid);
+        public MyNoteEntity GetReminder(long noteid, DateTime reminder);
+
 
 
 

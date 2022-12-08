@@ -26,10 +26,10 @@ namespace RepoLayer.Entity
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
 
-        [ForeignKey("UserDetailTable")]
+        [ForeignKey("UserDetail")]
         public long UserId { get; set; }
         [JsonIgnore]
-        public virtual UserTable UserDetailTable { get; set; }
+        public virtual UserTable? UserDetail { get; set; }
 
     }
 }

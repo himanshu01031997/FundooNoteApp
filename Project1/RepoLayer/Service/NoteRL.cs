@@ -29,7 +29,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var validateuser = funcontext.UserDetailTable.Where(r => r.UserId == UserId);
+                var validateuser = funcontext.UserTable.Where(r => r.UserId == UserId);
                 if (validateuser != null)
                 {
                     MyNoteEntity note = new MyNoteEntity();
@@ -44,7 +44,7 @@ namespace RepoLayer.Service
                     note.Created = notemodel.Created;
                     note.Modified = notemodel.Modified;
                     note.UserId =  UserId;
-                    funcontext.NoteEntityTable.Add(note);
+                    funcontext.NoteTable.Add(note);
                     funcontext.SaveChanges();
                     return note;
                 }
@@ -62,7 +62,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result = funcontext.NoteEntityTable.Where(r => r.UserId == userId);//after adding the note only we hava to use note entity table
+                var result = funcontext.NoteTable.Where(r => r.UserId == userId);//after adding the note only we hava to use note entity table
                 if (result != null)
                 {
                     return result;
@@ -85,7 +85,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result= funcontext.NoteEntityTable.FirstOrDefault(r=>r.NoteId==noteid && r.UserId==userId);//
+                var result= funcontext.NoteTable.FirstOrDefault(r=>r.NoteId==noteid && r.UserId==userId);//
                 if(result != null)
                 {
                     if(node.Title != null)
@@ -116,10 +116,10 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result=funcontext.NoteEntityTable.FirstOrDefault(r=>r.NoteId==noteid && r.UserId==userid);
+                var result=funcontext.NoteTable.FirstOrDefault(r=>r.NoteId==noteid && r.UserId==userid);
                 if(result != null)
                 {
-                    funcontext.NoteEntityTable.Remove(result);
+                    funcontext.NoteTable.Remove(result);
                     funcontext.SaveChanges();
                     return true;
                 }
@@ -137,7 +137,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                MyNoteEntity note = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                MyNoteEntity note = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
                 if (note.Color != null)
                 {
                     note.Color = color;
@@ -155,7 +155,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                MyNoteEntity result = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
                 if (result.PinNotes == true)
                 {
                     result.PinNotes = false;
@@ -178,7 +178,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                MyNoteEntity result = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
                 if (result.Archive == true)
                 {
                     result.Archive = false;
@@ -202,7 +202,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result = funcontext.NoteEntityTable.Where(r => r.UserId == userid && r.Archive == true);//after adding the note only we hava to use note entity table
+                var result = funcontext.NoteTable.Where(r => r.UserId == userid && r.Archive == true);//after adding the note only we hava to use note entity table
                 if (result != null)
                 {
                     return result;
@@ -222,7 +222,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                MyNoteEntity result = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
                 if (result.Trash == true)
                 {
                     result.Trash = false;
@@ -245,7 +245,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result = funcontext.NoteEntityTable.Where(r => r.UserId == userid && r.Trash == true);//after adding the note only we hava to use note entity table
+                var result = funcontext.NoteTable.Where(r => r.UserId == userid && r.Trash == true);//after adding the note only we hava to use note entity table
                 if (result != null)
                 {
                     return result;
@@ -266,17 +266,21 @@ namespace RepoLayer.Service
         {
             try
             {
-                MyNoteEntity result = this.funcontext.NoteEntityTable.FirstOrDefault(e => e.NoteId == noteid);
+                MyNoteEntity result = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
                 if (result.Trash == true)
                 {
-                    funcontext.NoteEntityTable.Remove(result);
+                    funcontext.NoteTable.Remove(result);
                     this.funcontext.SaveChanges();
                     return false;
 
                 }
-                result.Trash = true;
-                this.funcontext.SaveChanges();
-                return true;
+                else
+                {
+                    result.Trash = true;
+                    this.funcontext.SaveChanges();
+                    return true;
+                }
+               
 
 
             }
@@ -289,7 +293,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result = funcontext.NoteEntityTable.FirstOrDefault(r => r.NoteId == noteid && r.UserId == userid);
+                var result = funcontext.NoteTable.FirstOrDefault(r => r.NoteId == noteid && r.UserId == userid);
                 if (result != null)
                 {
                     Account account = new Account(
@@ -320,10 +324,24 @@ namespace RepoLayer.Service
             }
 
         }
-        
-
-
-
+        public MyNoteEntity GetReminder(long noteid, DateTime reminder)
+        {
+            try
+            {
+                MyNoteEntity note = this.funcontext.NoteTable.FirstOrDefault(e => e.NoteId == noteid);
+                if (note.Reminder != null)
+                {
+                    note.Reminder = reminder;
+                    this.funcontext.SaveChanges();
+                    return note;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
 

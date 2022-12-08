@@ -22,7 +22,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddTransient<IUserRL, UserRL>();
 builder.Services.AddTransient<IUserBL, UserBL>();
 builder.Services.AddTransient<INoteBL, NoteBL>();//
-builder.Services.AddTransient<INoteRL, NoteRL>();//
+builder.Services.AddTransient<INoteRL, NoteRL>();
+builder.Services.AddTransient<ILabelBL, LabelBL>();
+builder.Services.AddTransient<ILabelRL, LabelRL>();
+builder.Services.AddTransient<ICollabRL, CollabRL>();
+builder.Services.AddTransient<ICollabBL, CollabBL>();
 //for authrize in swagger
 builder.Services.AddSwaggerGen(c =>
 {

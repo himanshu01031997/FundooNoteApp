@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RepoLayer.Context;
@@ -75,14 +76,14 @@ namespace FundooNoteApp.Controllers
                 throw e;
             }
         }
-
+        [Authorize]
         [HttpPost]
         [Route("ResetPassword")]
-        public ActionResult ResetPassword(string email, PasswordValidation valid)
+        public ActionResult ResetPassword( PasswordValidation valid)
         {
             try
             {
-                //var red = User.FindFirst(ClaimTypes.Email).Value.ToString();
+                var email = User.FindFirst(ClaimTypes.Email).Value.ToString();
                 var result = userBL.ChangePassword(email,valid);
                 if(result != false)
                 {

@@ -38,7 +38,7 @@ namespace RepoLayer.Service
                 MyUser.LastName = usermodel.LastName;
                 MyUser.EmailId = usermodel.EmailId;
                 MyUser.Password = EncriptPassword(usermodel.Password);
-                funcontext.UserDetailTable.Add(MyUser);
+                funcontext.UserTable.Add(MyUser);
                 funcontext.SaveChanges();
                 return MyUser;
             }
@@ -51,7 +51,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var result = funcontext.UserDetailTable.Where(u => u.EmailId == email && u.Password == EncriptPassword(password)).FirstOrDefault();
+                var result = funcontext.UserTable.Where(u => u.EmailId == email && u.Password == EncriptPassword(password)).FirstOrDefault();
                 if (result != null)
                 {
                     return GetJWToken(email, result.UserId);
@@ -141,7 +141,7 @@ namespace RepoLayer.Service
         {
             try
             {
-                var CheckEmail = funcontext.UserDetailTable.FirstOrDefault(e => e.EmailId == email);
+                var CheckEmail = funcontext.UserTable.FirstOrDefault(e => e.EmailId == email);
                 if (CheckEmail != null)
                 {
                     var Token = GetJWToken(CheckEmail.EmailId, CheckEmail.UserId);
@@ -167,7 +167,7 @@ namespace RepoLayer.Service
             {
                 if (valid.Password.Equals(valid.ConfirmPassword))
                 {
-                    var user = funcontext.UserDetailTable.Where(x => x.EmailId == email).FirstOrDefault();
+                    var user = funcontext.UserTable.Where(x => x.EmailId == email).FirstOrDefault();
                     user.Password = EncriptPassword(valid.ConfirmPassword);//
                     funcontext.SaveChanges();
                     return true;
